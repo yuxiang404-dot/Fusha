@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="孚沙的主站.css">
+    <link rel="icon" href="约的头像稿.png">
+    <title>孚沙</title>
+</head>
+
+<body>
+    <canvas id="canvas"></canvas>
+    <header>
+        <a class="myicon" href="index.html">
+            <img src="约的头像稿.png" alt="头像">
+        </a>
+        <input type="checkbox" name="check" id="check">
+        <div class="display-right">
+            <a class="display-list"><label for="check">
+                    <i class="demo-icon">&#xe802;</i>
+                    <i class="demo-icon close">&#xf13d;</i>
+                </label></a>
+        </div>
+    </header>
+
+    <nav class="nav">
+        <div class="derivative">
+            <h3 class="cn">衍生</h3>
+            <h3 class="en">Derivative</h3>
+        </div>
+        <div class="list">
+            <ul>
+                <li><a href="IdentityV.html" target="_blank">
+                        <p class="cn">第五人格</p>
+                        <hr>
+                        <p class="en">IdentityV</p>
+                    </a></li>
+                <li><a href="ArKnights.html" target="_blank">
+                        <p class="cn">明日方舟</p>
+                        <hr>
+                        <p class="en">ArKnights</p>
+                    </a></li>
+                <li><a href="#">
+                        <p class="cn">全职高手</p>
+                        <hr>
+                        <p class="en">The King's Avatar</p>
+                    </a></li>
+                <li><a href="#">
+                        <p class="cn">是大臣/首相</p>
+                        <hr>
+                        <p class="en">YM/YPM</p>
+                    </a></li>
+            </ul>
+        </div>
+        <div class="copyright">
+            <p>本站的所有文字均为本人创作，版权属作者所有，未经书面授权，任何个体和机构不得以转载、印刷、镜像等任何形式复制发表。</p>
+            <p>头像为本人约稿，其余使用图片及图标均为无版权素材。</p>
+            <hr>
+            <p class="en">DEVELOPED BY FUSHA
+                <a href="https://weibo.com/u/7362402928" target="_blank"><i class="demo-icon">&#xf18a;</i></a>
+                <a href="https://fusha792.lofter.com/" target="_blank">LOFT</a>
+            </p>
+        </div>
+    </nav>
+
+    <script>
+        "use strict";
+
+        var canvas = document.getElementById('canvas'),
+            ctx = canvas.getContext('2d'),
+            w = canvas.width = window.innerWidth,
+            h = canvas.height = window.innerHeight,
+            hue = 217,
+            stars = [],
+            count = 0,
+            maxStars = 1500;
+
+        var canvas2 = document.createElement('canvas');
+        var w2 = canvas2.width = 100;
+        var h2 = canvas2.height = 100;
+        var ctx2 = canvas2.getContext("2d");
+        var gradientCache = ctx2.createRadialGradient(
+            w2 / 2,
+            h2 / 2,
+            0,
+            w2 / 2,
+            h2 / 2,
+            w2 / 2
+        );
+        gradientCache.addColorStop(0.025, '#fff');
+        gradientCache.addColorStop(0.1, 'hsl(' + hue + ', 61%, 33%)');
+        gradientCache.addColorStop(0.25, 'hsl(' + hue + ', 64%, 6%)');
+        gradientCache.addColorStop(1, 'transparent');
+        ctx2.fillStyle = gradientCache;
+        ctx2.beginPath();
+        ctx2.arc(w2 / 2, h2 / 2, w2 / 2, 0, Math.PI * 2);
+        ctx2.fill();
+
+        function random(min, max) {
+            if (arguments.length < 2) {
+                max = min;
+                min = 0;
+            }
+
+            if (min > max) {
+                var hold = max;
+                max = min;
+                min = hold;
+            }
+
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        function maxOrbit(x, y) {
+            var max = Math.max(x, y),
+                diameter = Math.round(Math.sqrt(max * max + max * max));
+            return diameter / 2;
+        }
+
+        var Star = function () {
+            this.orbitRadius = random(maxOrbit(w, h));
+            this.radius = random(60, this.orbitRadius) / 10;
+            this.orbitX = w / 2;
+            this.orbitY = h / 2;
+            this.timePassed = random(0, maxStars);
+            this.speed = random(this.orbitRadius) / 30000;
+            this.alpha = random(2, 10) / 10;
+
+            count++;
+            stars[count] = this;
+        }
+
+        Star.prototype.draw = function () {
+            var x = Math.sin(this.timePassed) * this.orbitRadius + this.orbitX,
+                y = Math.cos(this.timePassed) * this.orbitRadius + this.orbitY,
+                twinkle = random(10);
+
+            if (twinkle === 1 && this.alpha > 0) {
+                this.alpha -= 0.05;
+            } else if (twinkle === 2 && this.alpha < 1) {
+                this.alpha += 0.05;
+            }
+
+            ctx.globalAlpha = this.alpha;
+            ctx.drawImage(canvas2, x - this.radius / 2, y - this.radius / 2, this.radius, this.radius);
+            this.timePassed += this.speed;
+        }
+
+        for (var i = 0; i < maxStars; i++) {
+            new Star();
+        }
+
+        function animation() {
+            ctx.globalCompositeOperation = 'source-over';
+            ctx.globalAlpha = 0.8;
+            ctx.fillStyle = 'hsla(' + hue + ', 64%, 6%, 1)';
+            ctx.fillRect(0, 0, w, h)
+
+            ctx.globalCompositeOperation = 'lighter';
+            for (var i = 1, l = stars.length; i < l; i++) {
+                stars[i].draw();
+            };
+            window.requestAnimationFrame(animation);
+        }
+
+        animation();
+    </script>
+
+</body>
+
+</html>

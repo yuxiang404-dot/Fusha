@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="catalog.css">
+    <link rel="icon" href="约的头像稿.png">
+    <title>IdentityV</title>
+</head>
+
+<body>
+    <div class="void" id="void">
+        <div class="crop">
+            <ul class="card-list" style="--count:6;">
+                <li>
+                    <div class="card"><a class="pic">
+                            <img src="unsplash/joshua-harris--rkW0aKhOMA-unsplash.jpg" alt="rose">
+                        </a></div>
+                </li>
+                <li>
+                    <div class="card"><a href="Dans la maison.html" target="_blank">
+                            <p>2019.6&nbsp;Dans la maison</p>
+                        </a>
+                        <div class="tags">
+                            <span><i class="demo-icon tag">&#xe811;</i>杰园&nbsp;&nbsp;</span>
+                            <span><i class="demo-icon tag">&#xe811;</i>完结&nbsp;&nbsp;</span>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="card"><a href="Forensic Artist.html" target="_blank">
+                            <p>2019.7&nbsp;Forensic Artist</p>
+                        </a>
+                        <div class="tags">
+                            <span><i class="demo-icon tag">&#xe811;</i>杰园&nbsp;&nbsp;</span>
+                            <span><i class="demo-icon tag">&#xe811;</i>完结&nbsp;&nbsp;</span>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="card"><a class="pic">
+                            <img src="unsplash/joshua-harris--rkW0aKhOMA-unsplash.jpg" alt="rose">
+                        </a></div>
+                </li>
+                <li>
+                    <div class="card"><a href="#" target="_blank">
+                            <p>2019.6&nbsp;七环杯</p>
+                        </a>
+                        <div class="tags">
+                            <span><i class="demo-icon tag">&#xe811;</i>杰园&nbsp;&nbsp;</span>
+                            <span><i class="demo-icon tag">&#xe811;</i>完结&nbsp;&nbsp;</span>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="card"><a href="#" target="_blank">
+                            <p>2025.6&nbsp;婚礼</p>
+                        </a>
+                        <div class="tags">
+                            <span><i class="demo-icon tag">&#xe811;</i>杰园&nbsp;&nbsp;</span>
+                            <span><i class="demo-icon tag">&#xe811;</i>完结&nbsp;&nbsp;</span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <div class="last-circle"></div>
+            <div class="second-circle"></div>
+        </div>
+        <div class="mask"></div>
+        <div class="center-circle"></div>
+        <input type="checkbox" name="check" id="check">
+        <div class="display-middle">
+            <a class="display-list"><label for="check">
+                    <i class="demo-icon">&#xe802;</i>
+                    <i class="demo-icon close">&#xf13d;</i>
+                </label></a>
+        </div>
+    </div>
+
+    <nav class="nav">
+        <a href="index.html" target="_blank"><img src="约的头像稿.png" alt="头像"></a>
+        <h3 class="cn">第五人格</h3>
+        <h3 class="en">IdentityV</h3>
+        <dl>
+            <dt>D</dt>
+            <a href="Dans la maison.html">
+                <dd class="en">【杰园】Dans la maison</dd>
+            </a>
+
+            <dt>F</dt>
+            <a href="Forensic Artist.html">
+                <dd>【杰园】‌法医艺术家</dd>
+                <hr>
+                <dd class="en">Forensic Artist</dd>
+            </a>
+
+            <dt>H</dt>
+            <a href="#">
+                <dd>【杰园】婚礼</dd>
+                <hr>
+                <dd class="en">Wedding</dd>
+            </a>
+
+            <dt>Q</dt>
+            <a href="#">
+                <dd>【杰园】七环杯</dd>
+                <hr>
+                <dd class="en">Rhyton</dd>
+            </a>
+            
+        </dl>
+        <p class="copyright">Copyright@孚沙&nbsp;2025</p>
+    </nav>
+
+    <script>
+        document.querySelectorAll('.card .pic').forEach(cardLink => {
+            cardLink.addEventListener('click', function (e) {
+                e.preventDefault();
+                const checkBox = document.getElementById('check');
+                checkBox.checked = !checkBox.checked;
+                checkBox.dispatchEvent(new Event('change'));
+            });
+        });
+    </script>
+</body>
+
+</html>

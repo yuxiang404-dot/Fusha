@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="catalog.css">
+    <link rel="icon" href="约的头像稿.png">
+    <title>ArKnights</title>
+</head>
+
+<body>
+    <div class="void" id="void">
+        <div class="crop">
+            <ul class="card-list" style="--count:6;">
+                <li>
+                    <div class="card"><a class="pic">
+                            <img src="wolframlanguage.png" alt="wolf">
+                        </a></div>
+                </li>
+                <li>
+                    <div class="card"><a href="#" target="_blank">
+                            <p>2019.6&nbsp;墨丘利号</p>
+                        </a>
+                        <div class="tags">
+                            <span><i class="demo-icon tag">&#xe811;</i>快递组&nbsp;&nbsp;</span>
+                            <span><i class="demo-icon tag">&#xe811;</i>系列&nbsp;&nbsp;</span>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="card"><a href="#" target="_blank">
+                            <p>2019.7&nbsp;洛佩斯王子与本内特小姐</p>
+                        </a>
+                        <div class="tags">
+                            <span><i class="demo-icon tag">&#xe811;</i>快递组&nbsp;&nbsp;</span>
+                            <span><i class="demo-icon tag">&#xe811;</i>完结&nbsp;&nbsp;</span>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="card"><a class="pic">
+                            <img src="angel.png" alt="angel">
+                        </a></div>
+                </li>
+                <li>
+                    <div class="card"><a href="#" target="_blank">
+                            <p>2019.6&nbsp;冲突</p>
+                        </a>
+                        <div class="tags">
+                            <span><i class="demo-icon tag">&#xe811;</i>快递组&nbsp;&nbsp;</span>
+                            <span><i class="demo-icon tag">&#xe811;</i>连载&nbsp;&nbsp;</span>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="card"><a href="#" target="_blank">
+                            <p>2025.6&nbsp;墨丘利号（其二）</p>
+                        </a>
+                        <div class="tags">
+                            <span><i class="demo-icon tag">&#xe811;</i>快递组&nbsp;&nbsp;</span>
+                            <span><i class="demo-icon tag">&#xe811;</i>系列&nbsp;&nbsp;</span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <div class="last-circle"></div>
+            <div class="second-circle"></div>
+        </div>
+        <div class="mask"></div>
+        <div class="center-circle"></div>
+        <input type="checkbox" name="check" id="check">
+        <div class="display-middle">
+            <a class="display-list"><label for="check">
+                    <i class="demo-icon">&#xe802;</i>
+                    <i class="demo-icon close">&#xf13d;</i>
+                </label></a>
+        </div>
+    </div>
+
+    <nav class="nav">
+        <a href="index.html" target="_blank"><img src="约的头像稿.png" alt="头像"></a>
+        <h3 class="cn">明日方舟</h3>
+        <h3 class="en">ArKnights</h3>
+        <dl>
+            <dt>C</dt>
+            <a href="#">
+                <dd>【快递组】冲突</dd>
+                <hr>
+                <dd class="en">Guardie & Ladri</dd>
+            </a>
+            <dd></dd>
+            <a href="#">
+                <dd>【快递组】长途电话</dd>
+                <hr>
+                <dd class="en">‌Long-distance call</dd>
+            </a>
+
+            <dt>L</dt>
+            <a href="#">
+                <dd>【快递组】洛佩斯王子与本内特小姐</dd>
+                <hr>
+                <dd class="en">Prince Lopez & Miss Bennett</dd>
+            </a>
+
+            <dt>M</dt>
+            <a href="#">
+                <dd>【快递组】墨丘利号</dd>
+                <hr>
+                <dd class="en">Mercury</dd>
+            </a>
+        </dl>
+        <p class="copyright">Copyright@孚沙&nbsp;2025</p>
+    </nav>
+
+    <script>
+        document.querySelectorAll('.card .pic').forEach(cardLink => {
+            cardLink.addEventListener('click', function (e) {
+                e.preventDefault();
+                const checkBox = document.getElementById('check');
+                checkBox.checked = !checkBox.checked;
+                checkBox.dispatchEvent(new Event('change'));
+            });
+        });
+    </script>
+</body>
+
+</html>

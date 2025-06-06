@@ -1,0 +1,203 @@
+body {
+    background: #060e1b;
+    overflow: hidden;
+    margin: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+header {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background: rgba(0, 0, 0, 0.50);
+    backdrop-filter: blur(10px);
+    height: 80px;
+    font-weight: 600;
+    font-size: 20px;
+    position: relative;
+}
+
+a {
+    text-decoration: none;
+}
+
+header a {
+    color: rgba(143, 164, 198, 0.509);
+    font-family: 黑体, sans-serif;
+}
+
+header img {
+    width: 3rem;
+    border-radius: 100%;
+    top: 16px;
+    left: 16px;
+    position: absolute;
+}
+
+.display-list {
+    padding: 8px 16px;
+    transition: 300ms;
+    border-radius: 99px;
+    top: 21px;
+    right: 16px;
+    position: absolute;
+}
+
+.display-list:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: black;
+    cursor: pointer;
+}
+
+#check:checked~.display-right .display-list .demo-icon {
+    display: none;
+}
+
+.display-right .display-list .close {
+    display: none;
+}
+
+#check:checked~.display-right .display-list .close {
+    display: block;
+}
+
+#check {
+    display: none;
+}
+
+header:has(#check:checked)+.nav {
+    left: 0;
+    transition: left 500ms ease;
+}
+
+.nav {
+    position: relative;
+    left: -100%;
+    display: flex;
+    flex-direction: column;
+    background: #060e1bda;
+    height: 100vh;
+    width: 35%;
+    overflow-y: auto;
+    padding: 0px 20px;
+    user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+}
+
+ul {
+    list-style: none;
+    text-align: left;
+    padding-left: 0;
+}
+
+h3 {
+    margin: 4px 0;
+    text-align: center;
+    color: rgba(100, 148, 237, 0.5);
+    text-decoration: double;
+}
+
+li a {
+    padding: 8px 16px;
+    color: rgba(143, 164, 198, 0.509);
+    text-decoration: none;
+}
+
+.cn p {
+    font-family: 黑体, sans-serif;
+    font-size: 1.2rem;
+}
+
+.en {
+    opacity: 50%;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1rem;
+}
+
+hr,
+li p {
+    margin: 0;
+}
+
+@media (max-height: 736px) {
+    .copyright {
+        z-index: -1;
+    }
+}
+
+.copyright {
+    position: absolute;
+    bottom: 80px;
+    color: white;
+    font-family: 宋体, sans-serif;
+    font-size: 12px;
+}
+
+.copyright a {
+    color: white;
+    text-decoration: underline;
+}
+
+.copyright .en {
+    font-size: 12px;
+}
+
+#canvas {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+}
+
+@font-face {
+    font-family: 'fontello';
+    src: url('./font/fontello.eot?76321003');
+    src: url('./font/fontello.eot?76321003#iefix') format('embedded-opentype'),
+        url('./font/fontello.woff?76321003') format('woff'),
+        url('./font/fontello.ttf?76321003') format('truetype'),
+        url('./font/fontello.svg?76321003#fontello') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.demo-icon {
+    font-family: "fontello";
+    font-style: normal;
+    font-weight: normal;
+
+    display: inline-block;
+    text-decoration: inherit;
+    width: 1em;
+    margin-right: .2em;
+    text-align: center;
+    /* opacity: .8; */
+
+    /* For safety - reset parent styles, that can break glyph codes*/
+    font-variant: normal;
+    text-transform: none;
+
+    /* fix buttons height, for twitter bootstrap */
+    line-height: 1em;
+
+    /* Animation center compensation - margins should be symmetric */
+    /* remove if not needed */
+    margin-left: .2em;
+
+    /* You can be more comfortable with increased icons size */
+    /* font-size: 120%; */
+
+    /* Font smoothing. That was taken from TWBS */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
